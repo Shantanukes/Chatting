@@ -188,7 +188,7 @@ function SideDrawer() {
           cursor="pointer"
           textShadow="2px 2px 8px rgba(0, 0, 0, 0.6)" // Update the shadow effect
         >
-          ChatMind
+          Let's Chat
         </Text>
 
         <div>
@@ -278,7 +278,7 @@ function SideDrawer() {
             textAlign="center"
             fontSize="2rem"
           >
-            ChatMind
+            Let's Chat
           </DrawerHeader>
           <DrawerBody>
             <Box d="flex" pb={2}>

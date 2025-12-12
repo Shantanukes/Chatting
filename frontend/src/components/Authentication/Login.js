@@ -170,7 +170,7 @@ const { isAuth ,setIsAuth } = ChatState();
               variant="body2"
               className={classes.termsAndConditionsText}
             >
-              I accept the ChatMind Terms of Use and acknowledge ChatMind will
+              I accept the Let's Chat Terms of Use and acknowledge Let's Chat will
               use my information in accordance with its
               <Link to="#" className={classes.privacyText}>
                 Privacy Policy.

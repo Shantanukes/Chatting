@@ -1,7 +1,7 @@
-# ChatMind - A Real-Time Chat Webapp.
+# Let's Chat - A Real-Time Chat Webapp.
 ---
 
-ChatMind is a full stack chat application that allows users to communicate with each other in real-time. It supports features like user authentication, one-on-one chat, group chat, user profile management, and more.
+Let's Chat is a full stack chat application that allows users to communicate with each other in real-time. It supports features like user authentication, one-on-one chat, group chat, user profile management, and more.
 
 ### If you find this project helpful, please consider giving it a star ⭐ and follow me on [GitHub](https://github.com/MehraDevesh2022) && [X](https://twitter.com/Iam_DEv22) for more exciting projects like this! 🚀
 
@@ -363,5 +363,6 @@ if (process.env.NODE_ENV === "production") {
 
 
   
-#   C h a t t i n g  
+#   C h a t t i n g 
+ 
  

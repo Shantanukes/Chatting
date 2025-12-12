@@ -7,17 +7,17 @@ function HomePage() {
 
   return (
     <>
-      <MetaData title="ChatMind | Home" />
+      <MetaData title="Let's Chat | Home" />
       <nav className="navbar">
         <div className="navbar-container">
           <Link to="#">
-            <div className="navbar-logo">ChatMind</div>
+            <div className="navbar-logo">Let's Chat</div>
           </Link>
           <div className="navbar-menu">
             <div className="navbar-item">
               {location.pathname === "/login"
-                ? "Ready to ChatMind? Let's Login"
-                : "Join the ChatMind community !"}
+                ? "Ready to Let's Chat? Let's Login"
+                : "Join the Let's Chat community !"}
             </div>
           </div>
         </div>

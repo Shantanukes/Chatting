@@ -269,7 +269,7 @@ const submitHandler = async () => {
              variant="body2"
              className={classes.termsAndConditionsText}
            >
-             I acknowledge ChatMind will use my information in accordance with
+             I acknowledge Let's Chat will use my information in accordance with
              its
              <Link href="#" className={classes.privacyText}>
                Privacy Policy.
