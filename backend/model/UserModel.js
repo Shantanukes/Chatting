@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      require: [true, "Please Enter Your Name"],
+      required: [true, "Please Enter Your Name"],
     },
     email: {
       type: String,
@@ -25,7 +25,7 @@ const userSchema = new mongoose.Schema(
       select: false, // this will make sure password is sended with data to anyone not even admin when he req for user data
     },
     pic: {
-      type: "String",
+      type: String,
       required: true,
       default:
         "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg",
