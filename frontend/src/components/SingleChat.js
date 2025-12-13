@@ -23,9 +23,10 @@ import io from "socket.io-client";
 import UpdateGroupChatModal from "./miscellaneous/UpdateGroupChatModal";
 import { ChatState } from "../Context/ChatProvider";
 
+// Socket endpoint: use localhost in development, deployed backend otherwise
 const ENDPOINT = window.location.hostname === "localhost"
-  ? "http://localhost:5000"
-  : "https://chat-mind-production.up.railway.app/";
+  ? "http://localhost:4000"
+  : "https://chatting12.onrender.com";
 var socket, selectedChatCompare;
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {

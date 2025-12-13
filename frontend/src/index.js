@@ -6,6 +6,14 @@ import reportWebVitals from "./reportWebVitals";
 import { ChakraProvider } from "@chakra-ui/react";
 import ChatProvider from "./Context/ChatProvider";
 import { BrowserRouter } from "react-router-dom";
+import axios from "axios";
+
+// Configure axios base URL to point to backend API
+// Uses localhost during development, and the deployed backend in production
+axios.defaults.baseURL =
+  window.location.hostname === "localhost"
+    ? "http://localhost:4000"
+    : "https://chatting12.onrender.com";
 
 ReactDOM.render(
   <ChakraProvider>
