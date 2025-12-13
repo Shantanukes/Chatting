@@ -1,9 +1,8 @@
 const asyncWrapper = require("../middleWare/asyncWrapper");
 const UserModel = require("../model/UserModel");
 const sendJwtToekn = require("../appUtills/jwtToken");
-const cloudinary = require("cloudinary");
+const cloudinary = require("cloudinary").v2;
 const ErrorHandler = require("../appUtills/error");
-const userModel = require("../model/UserModel");
  
  
 
@@ -45,12 +44,15 @@ exports.allSearchUser = asyncWrapper(async (req, res) => {
 exports.registerUser = asyncWrapper(async (req, res, next) => {
   // cloudinary config for image upload to cloudinary server 
 
-
-  const myCloud = await cloudinary.v2.uploader.upload(req.body.pic, {
-    folder: "profile",
-    width: 150,
-    crop: "scale",
-  }); 
+  let uploadedPicUrl;
+  if (req.body.pic) {
+    const myCloud = await cloudinary.uploader.upload(req.body.pic, {
+      folder: "profile",
+      width: 150,
+      crop: "scale",
+    });
+    uploadedPicUrl = myCloud.secure_url;
+  }
  
     
  
@@ -71,7 +73,7 @@ exports.registerUser = asyncWrapper(async (req, res, next) => {
     name,
     password,
     email,
-    pic: myCloud.secure_url,
+    ...(uploadedPicUrl ? { pic: uploadedPicUrl } : {}),
   });
 
 

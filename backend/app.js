@@ -2,9 +2,9 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
-const connectDB = require("../backend/db/connectDB");
+const connectDB = require("./db/connectDB");
 const dotenv = require("dotenv");
-const cloudinary = require("cloudinary");
+const cloudinary = require("cloudinary").v2;
 const errorMiddleware = require("./middleWare/errorHandler");
 const fileUpload = require("express-fileupload");
 const path = require("path");
@@ -13,13 +13,19 @@ var cors = require("cors");
 const userRoute = require("./route/userRoute");
 const chatRuote = require("./route/chatRoute");
 const messageRoute = require("./route/messageRoutes");
-dotenv.config();
+dotenv.config({ path: path.join(__dirname, "utills", ".env") });
+
+app.use(
+  cors({
+    origin: process.env.CLIENT_ORIGIN || "http://localhost:3000",
+    credentials: true,
+  })
+);
 app.use(cookieParser());
 app.use(express.json());
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use(fileUpload());
-app.use(errorMiddleware);
 
 
 //this is for logging the incoming request
@@ -31,7 +37,6 @@ app.use(errorMiddleware);
 app.use("/api/user", userRoute);
 app.use("/api/chat", chatRuote);
 app.use("/api/message", messageRoute);
-app.use(cors());
 // conncet with cloudinary
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_NAME,
@@ -54,10 +59,13 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
+// error handler should be registered after routes
+app.use(errorMiddleware);
+
 // connect to DB
 connectDB();
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 4000;
 
 const server = app.listen(PORT, () =>
   console.log(`Server started on port ${PORT}`)
@@ -66,7 +74,7 @@ const server = app.listen(PORT, () =>
 const io = require("socket.io")(server, {
   pingTimeout: 60000,
   cors: {
-    origin: "http://localhost:3000",
+    origin: process.env.CLIENT_ORIGIN || "http://localhost:3000",
     // credentials: true,
   },
 });
@@ -74,6 +82,7 @@ const io = require("socket.io")(server, {
 io.on("connection", (socket) => {
   console.log("Connected to socket.io");
   socket.on("setup", (userData) => {
+    socket.userId = userData?._id;
     socket.join(userData._id);
     socket.emit("connected");
   });
@@ -105,6 +114,8 @@ io.on("connection", (socket) => {
   // when user disconnect from socket then leave the room and disconnect the socket connection
   socket.off("setup", () => {
     console.log("USER DISCONNECTED");
-    socket.leave(userData._id);
+    if (socket.userId) {
+      socket.leave(socket.userId);
+    }
   });
 });

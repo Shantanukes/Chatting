@@ -44,7 +44,7 @@ Let's Chat is a full stack chat application that allows users to communicate wit
 
 ## Intro 📝
 
-ChatMind is a chat application built with the MERN stack. It provides a seamless and real-time chatting experience for users. With features like user authentication, one-on-one chat, group chat, and user profile management, ChatMind offers a comprehensive solution for communication needs.
+Let's Chat is a chat application built with the MERN stack. It provides a seamless and real-time chatting experience for users. With features like user authentication, one-on-one chat, group chat, and user profile management, Let's Chat offers a comprehensive solution for communication needs.
 
 ## Sections 🔖
 
@@ -65,7 +65,7 @@ ChatMind is a chat application built with the MERN stack. It provides a seamless
 
 ## Installation ⬇️
 
-To run ChatMind locally, you will need to have Git and Node.js installed on your machine.
+To run Let's Chat locally, you will need to have Git and Node.js installed on your machine.
 
 ### Git
 
@@ -77,7 +77,7 @@ Download and install Node.js from the official website: [https://nodejs.org](htt
 
 ## Getting Started 🎯
 
-To get started with ChatMind, follow these steps:
+To get started with Let's Chat, follow these steps:
 
 1. Fork and clone the repository from GitHub:
   
@@ -191,13 +191,24 @@ To get started with ChatMind, follow these steps:
 
 ## Setting Up .env in Backend 🔧
 
-To set up the environment variables for the backend, create a `.env` file inside the `backend/utils` directory with the following contents:
+To set up the environment variables for the backend, create a `.env` file inside the `backend/utills` directory (note: folder name is `utills` in this repo) with the following contents.
+You can also copy `backend/utills/.env.example` to `backend/utills/.env`.
 
 ```bash
 
-PORT=5000
+PORT=4000
 DB_LINK=xxxx
 JWT_SECRET=xxxx
+JWT_EXPIRE=7d
+COOKIE_EXPIRE=7
+
+# Optional: allow cookies/credentials from frontend
+CLIENT_ORIGIN=http://localhost:3000
+
+# Cloudinary (required if you upload profile pictures)
+CLOUDINARY_NAME=xxxx
+CLOUDINARY_API_KEY=xxxx
+CLOUDINARY_API_SECRET=xxxx
 JWT_EXPIRE=2d
 COOKIE_EXPIRE=2
 NODE_ENV=production

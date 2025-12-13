@@ -27,8 +27,6 @@ import { useToast } from "@chakra-ui/toast";
 import ChatLoading from "../ChatLoading";
 import { Spinner } from "@chakra-ui/spinner";
 import ProfileModal from "./ProfileModal";
-import NotificationBadge from "react-notification-badge";
-import { Effect } from "react-notification-badge";
 import { getSender } from "../../config/ChatLogics";
 import { createdAt } from "../../config/ChatLogics";
 import UserListItem from "../userAvatar/UserListItem";
@@ -194,11 +192,27 @@ function SideDrawer() {
         <div>
           <Menu>
             <MenuButton p={1}>
-              <NotificationBadge
-                count={notification.length}
-                effect={Effect.SCALE}
-              />
-              <BellIcon fontSize="2xl" m={1} />
+              <Box position="relative" display="inline-block">
+                <BellIcon fontSize="2xl" m={1} />
+                {notification.length > 0 ? (
+                  <Box
+                    position="absolute"
+                    top="-2px"
+                    right="-2px"
+                    minW="18px"
+                    h="18px"
+                    px="5px"
+                    borderRadius="999px"
+                    bg="#FF3B3B"
+                    color="#FFFFFF"
+                    fontSize="12px"
+                    lineHeight="18px"
+                    textAlign="center"
+                  >
+                    {notification.length}
+                  </Box>
+                ) : null}
+              </Box>
             </MenuButton>
             <MenuList pl={2} bg="#28293D" color="white">
               {!notification.length && <MenuItem>No New Messages</MenuItem>}

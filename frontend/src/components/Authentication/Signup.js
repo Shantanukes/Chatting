@@ -252,14 +252,14 @@ const submitHandler = async () => {
              <Grid item>
                <FormControlLabel
                  control={<Checkbox />}
-                 label="I Accept The ChatMind Terms & Conditions"
+                 label="I Accept The Let's Chat Terms & Conditions"
                  className={classes.checkbox}
                />
              </Grid>
              <Grid item>
                <FormControlLabel
                  control={<Checkbox />}
-                 label="I Accept The  ChatMind Terms Of Use"
+                 label="I Accept The Let's Chat Terms Of Use"
                  className={classes.checkbox}
                />
              </Grid>

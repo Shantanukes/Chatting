@@ -15,7 +15,7 @@ import axios from "axios";
 import { ArrowBackIcon } from "@chakra-ui/icons";
 import ProfileModal from "./miscellaneous/ProfileModal";
 import ScrollableChat from "./ScrollableChat";
-import Lottie from "react-lottie";
+import Lottie from "lottie-react";
 import EmojiOptions from "./EmojiOptions";
 import animationData from "../animations/typing.json";
 import backgroundImage from "../img/img.jpg";
@@ -23,10 +23,17 @@ import io from "socket.io-client";
 import UpdateGroupChatModal from "./miscellaneous/UpdateGroupChatModal";
 import { ChatState } from "../Context/ChatProvider";
 
-// Socket endpoint: use localhost in development, deployed backend otherwise
-const ENDPOINT = window.location.hostname === "localhost"
-  ? "http://localhost:4000"
-  : "https://chatting12.onrender.com";
+// Socket endpoint: in Vercel, set REACT_APP_SOCKET_ENDPOINT to your Render backend URL.
+// Example: REACT_APP_SOCKET_ENDPOINT=https://chatting12.onrender.com
+const DEFAULT_SOCKET_ENDPOINT =
+  window.location.hostname === "localhost"
+    ? "http://localhost:4000"
+    : "https://chatting12.onrender.com";
+
+const ENDPOINT =
+  process.env.REACT_APP_SOCKET_ENDPOINT ||
+  process.env.REACT_APP_API_BASE_URL ||
+  DEFAULT_SOCKET_ENDPOINT;
 var socket, selectedChatCompare;
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
@@ -37,15 +44,6 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
   const [typing, setTyping] = useState(false);
   const [istyping, setIsTyping] = useState(false);
   const toast = useToast();
-
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: animationData,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
-  };
   const { selectedChat, setSelectedChat, user, notification, setNotification } =
     ChatState();
 
@@ -262,10 +260,9 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
               {istyping ? (
                 <div>
                   <Lottie
-                    options={defaultOptions}
-                    // height={50}
-                    width={70}
-                    style={{ marginBottom: 15, marginLeft: 0 }}
+                    animationData={animationData}
+                    loop={true}
+                    style={{ width: 70, marginBottom: 15, marginLeft: 0 }}
                   />
                 </div>
               ) : (

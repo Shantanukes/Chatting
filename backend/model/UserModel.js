@@ -44,11 +44,12 @@ const userSchema = new mongoose.Schema(
 // " it will run berfore Schema Updates" >>>>Password hash<<<<
 userSchema.pre("save", async function (next) {
   // without this if statment password hashed each time when data modifeid
-  if (this.isModified === false) {
-    next();
+  if (!this.isModified("password")) {
+    return next();
   }
   // if password upadated or newaly created then :
   this.password = await bcrypt.hash(this.password, 10);
+  next();
 });
 
 //>>>>>JWT Token method<<<<<<

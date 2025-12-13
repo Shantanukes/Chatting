@@ -10,9 +10,9 @@
   "author": "itsCodeWithDEv",
   "license": "ISC",
   "dependencies": {
-    "@strapi/provider-upload-cloudinary": "^4.10.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.2",
+    "cloudinary": "^2.7.0",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",

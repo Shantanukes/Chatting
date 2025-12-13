@@ -1,6 +1,10 @@
 const ErrorHandler = require("../appUtills/error");
 
 module.exports = (err, req, res, next) => {
+  if (res.headersSent) {
+    return next(err);
+  }
+
   err.statusCode = err.statusCode || 500;
   err.message = err.message || "Internal Server Error";
 
@@ -27,7 +31,4 @@ module.exports = (err, req, res, next) => {
     success: false,
     message: err.message,
   });
-
-  // Pass the error object to the next middleware function
-  next(err);
 };

@@ -1,9 +1,10 @@
 const mongoose = require("mongoose");
-require("dotenv").config({path : "backend/utills/.env"});
-
-
-
 function connectDB() {
+  if (!process.env.DB_LINK) {
+    console.log("Missing DB_LINK environment variable");
+    return;
+  }
+
   mongoose
     .connect(process.env.DB_LINK)
     .then(() => console.log("DB_CONNECTED"))

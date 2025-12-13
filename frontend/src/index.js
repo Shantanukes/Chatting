@@ -9,11 +9,15 @@ import { BrowserRouter } from "react-router-dom";
 import axios from "axios";
 
 // Configure axios base URL to point to backend API
-// Uses localhost during development, and the deployed backend in production
-axios.defaults.baseURL =
+// In Vercel, set REACT_APP_API_BASE_URL to your Render backend URL.
+// Example: REACT_APP_API_BASE_URL=https://chatting12.onrender.com
+const DEFAULT_API_BASE_URL =
   window.location.hostname === "localhost"
     ? "http://localhost:4000"
     : "https://chatting12.onrender.com";
+
+axios.defaults.baseURL =
+  process.env.REACT_APP_API_BASE_URL || DEFAULT_API_BASE_URL;
 
 ReactDOM.render(
   <ChakraProvider>
