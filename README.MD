@@ -250,12 +250,12 @@ CLOUDINARY_URL=xxxx
 9. You're all set to go!
    - Your MERN stack app is now deployed and accessible using the generated domain.
 
-- **Railway Platform**: [https://chat-mind-production.up.railway.app/signup)
+- **Railway Platform**: https://chat-mind-production.up.railway.app/signup
 
 
 
 ## Hosting 🌐
-ChatMind can be hosted using the Render platform. Follow these steps to deploy ChatMind:  [https://chat-mind-3pcx.onrender.com/](https://chat-mind-3pcx.onrender.com/)
+Let's Chat can be hosted using the Render platform. Follow these steps to deploy Let's Chat: https://chatting12.onrender.com/
 
  1. Build the frontend by running the following command in the frontend directory: `npm run build`
  2.  Add the following deployment code to the `app.js` file in the backend directory:  
@@ -354,7 +354,7 @@ if (process.env.NODE_ENV === "production") {
  
  ## Contribution Guidelines 🤝
 
- contributions are welcome! To contribute to ChatMind, follow these steps:
+ contributions are welcome! To contribute to Let's Chat, follow these steps:
  
  - Fork the repository.
  - Create a new branch.
@@ -367,13 +367,10 @@ if (process.env.NODE_ENV === "production") {
   @MehraDevesh2022 
 
  
-> Happy chatting with ChatMind! If you have any questions or need further assistance, feel free to reach out.
+> Happy chatting with Let's Chat! If you have any questions or need further assistance, feel free to reach out.
  
 
 
 
 
   
-#   C h a t t i n g 
- 
- 
