@@ -23,17 +23,11 @@ import io from "socket.io-client";
 import UpdateGroupChatModal from "./miscellaneous/UpdateGroupChatModal";
 import { ChatState } from "../Context/ChatProvider";
 
-// Socket endpoint: in Vercel, set REACT_APP_SOCKET_ENDPOINT to your Render backend URL.
-// Example: REACT_APP_SOCKET_ENDPOINT=https://chatting12.onrender.com
-const DEFAULT_SOCKET_ENDPOINT =
-  window.location.hostname === "localhost"
-    ? "http://localhost:4000"
-    : "https://chatting12.onrender.com";
-
+// Socket endpoint: use Render backend URL for production
 const ENDPOINT =
   process.env.REACT_APP_SOCKET_ENDPOINT ||
   process.env.REACT_APP_API_BASE_URL ||
-  DEFAULT_SOCKET_ENDPOINT;
+  "https://chatting12.onrender.com";
 var socket, selectedChatCompare;
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
