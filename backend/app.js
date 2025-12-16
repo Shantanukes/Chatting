@@ -17,7 +17,7 @@ dotenv.config({ path: path.join(__dirname, "utills", ".env") });
 
 app.use(
   cors({
-    origin: process.env.CLIENT_ORIGIN || "http://localhost:3000",
+    origin: process.env.CLIENT_ORIGIN || "https://chatting-git-main-shantanukes-projects.vercel.app",
     credentials: true,
   })
 );
@@ -74,7 +74,7 @@ const server = app.listen(PORT, () =>
 const io = require("socket.io")(server, {
   pingTimeout: 60000,
   cors: {
-    origin: process.env.CLIENT_ORIGIN || "http://localhost:3000",
+    origin: process.env.CLIENT_ORIGIN || "https://chatting-git-main-shantanukes-projects.vercel.app",
     // credentials: true,
   },
 });
